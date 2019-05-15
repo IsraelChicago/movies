@@ -1,2 +1,2 @@
-json.partial! "movie.json.jbuilder", 
+json.partial! "movies.json.jbuilder", 
 movie: @movie
