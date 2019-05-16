@@ -16,7 +16,9 @@ class Api::MoviesController < ApplicationController
     @movie = Movie.new(
     title: params[:title],
     year: params[:year],
-    plot: params[:plot]
+    plot: params[:plot],
+    english: params[:english],
+    director: params[:director]
     )
     @movie.save
     render 'show.json.jbuilder'
@@ -28,16 +30,19 @@ class Api::MoviesController < ApplicationController
     @movie.title = params[:title] || @movie.title
     @movie.year = params[:year] || @movie.year
     @movie.plot = params[:plot] || @movie.plot
+    @movie.english = params[:english] || @movie.english
+    @movie.director = params[:director] || @movie.director
+    
 
     @movie.save
-    render show.json.jbuilder
+    render 'show.json.jbuilder'
   end
 
 
   def destroy
-    @movie = Movie.find[:id]
+    @movie = Movie.find(params[:id])
     @movie.destroy
-    render "index.json.jbuilder"
+    render "show.json.jbuilder" 
   end
 
 
