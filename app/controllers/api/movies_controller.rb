@@ -1,7 +1,33 @@
 class Api::MoviesController < ApplicationController
 
   def index
-    @movie = Movie.all 
+    @movie = Movie.all.order(:id) 
+
+    if params[:title]
+      @movie = @movie.where("title iLIKE ?", "%#{params[:title]}%")
+    end
+
+
+    if params[:title]
+      @movie = @movie.where("title iLIKE ?", "%#{params[:title]}%")
+    end
+
+
+    if params[:discount]
+      @movie = @movie.where("price < ?", 10)
+    end
+
+
+    if params[:sort] == "price"
+      
+      if params[:sort_order] == "desc"
+        @movie = @movie.order(price: :desc)
+      else
+        @movie = @movie.order(:price)
+      end
+
+    end
+
     render 'index.json.jbuilder'
   end
 

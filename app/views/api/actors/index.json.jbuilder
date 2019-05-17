@@ -1,4 +1,4 @@
-json.array! @movie.each do |movie|
-  json.partial! "movies.json.jbuilder", 
-  movie: movie 
+json.array! @actor.each do |actor|
+  json.partial! "actors.json.jbuilder", 
+  actor: actor 
 end
