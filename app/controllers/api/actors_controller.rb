@@ -1,6 +1,6 @@
 class Api::ActorsController < ApplicationController
 
-  validates :first_name, presence: true
+  #validates :first_name, presence: true
 
   def index
     @actor = Actor.all.order(:id) 
